@@ -95,6 +95,8 @@ class TabBarMenu extends StatelessWidget {
 
   void _pushSettings() {}
 
+  void _pushAddNew() {}
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -122,6 +124,8 @@ class TabBarMenu extends StatelessWidget {
             LeaderboardTab(),
           ],
         ),
+        floatingActionButton: FloatingActionButton(
+            onPressed: _pushAddNew, child: Icon(Icons.add)),
       ),
     );
   }
