@@ -1,109 +1,90 @@
 import 'package:flutter/material.dart';
+import 'package:english_words/english_words.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+// Overall notes on flutter
+// Almost everything is a widget, including alignment, padding, and layout.
+
+// The Scaffold widget provides a default app bar
+// and a body property that holds the widget tree for the home screen.
+
+// A widget’s main job is to provide a build() method that describes how to
+// display the widget in terms of other, lower level widgets.
+
+// The body for this example consists of a Center widget containing a Text
+// child widget.
+
+// => notation signifies single-line method behavior
+// alternatively, runApp(const MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
+  // build method within StatelessWidget class
+  // returns a Widget
   @override
   Widget build(BuildContext context) {
+    // MaterialApp seems to be a widget
     return MaterialApp(
-      title: 'Opportuno',
+      title: 'Startup Name Generator',
       theme: ThemeData(
-        // Try running your application with "flutter run".
-        // Invoke "hot reload" press "r" in the console where you ran "flutter run"
-
         primarySwatch: Colors.amber,
       ),
-      home: const MyHomePage(title: 'Opportuno Home'),
+      home: RandomWords(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application.
-  // It is stateful, meaning that it has a State object
-  // that contains fields that affect how it looks.
-
-  // This class is the configuration for the state. It holds the values (such the title)
-  // provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
+class RandomWords extends StatefulWidget {
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _RandomWordsState createState() => _RandomWordsState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+// by default, the name of a state class is prefixed with an underbar
+// generic state class specialized for use with randomwords
+// maintains state for the widget
+// separate class for the actual state -- main class creates an instance
+class _RandomWordsState extends State<RandomWords> {
+  final _suggestions = <WordPair>[]; // wordpair array
+  final _saved = <WordPair>{}; // SET! doesn't allow duplicate entries
+  final _biggerFont = const TextStyle(fontSize: 18.0);
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  Widget _buildSuggestions() {
+    return ListView.builder(
+        padding: const EdgeInsets.all(16.0),
+        itemBuilder: (context, i) {
+          // i is iterator and begins at 0, increments twice
+          // but where is it being incremented????? every time the function is called
+          if (i.isOdd) return const Divider(); // add a divider for each row
+          final index = i ~/
+              2; // calculates number of actual word pairings minus dividers
+
+          if (index >= _suggestions.length) {
+            _suggestions.addAll(generateWordPairs().take(10));
+            // if reach the end of pairings, generate 10 more and add them to the list
+          }
+          return _buildRow(_suggestions[index]); // calls once per word pair
+        });
+  }
+
+  Widget _buildRow(WordPair pair) {
+    final alreadySaved = _saved.contains(pair);
+    return ListTile(
+        title: Text(
+          pair.asPascalCase,
+          style: _biggerFont,
+        ),
+        trailing: Icon(
+          alreadySaved ? Icons.favorite : Icons.favorite_border,
+          color: alreadySaved ? Colors.red : null,
+          semanticLabel: alreadySaved ? 'Remove from saved' : 'Save',
+        ));
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+        appBar: AppBar(
+          title: Center(child: Text('Startup Name Generator')),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        body: _buildSuggestions());
   }
 }
