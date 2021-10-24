@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -51,31 +52,6 @@ class TabBarMenu extends StatelessWidget {
         ),
       ),
     );
-
-    /*return MaterialApp(
-      home: DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          appBar: AppBar(
-            bottom: const TabBar(
-              tabs: [
-                Tab(icon: Icon(Icons.home)),
-                Tab(icon: Icon(Icons.map)),
-                Tab(icon: Icon(Icons.leaderboard)),
-              ],
-            ),
-            title: const Text('Tabs Demo'),
-          ),
-          body: const TabBarView(
-            children: [
-              Icon(Icons.home),
-              Icon(Icons.map),
-              Icon(Icons.leaderboard),
-            ],
-          ),
-        ),
-      ),
-    );*/
   }
 }
 
@@ -98,18 +74,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
