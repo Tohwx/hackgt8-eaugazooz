@@ -3,14 +3,14 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
 
 // Map display
-class Map extends StatefulWidget {
-  const Map({Key? key}) : super(key: key);
+class MapView extends StatefulWidget {
+  const MapView({Key? key}) : super(key: key);
 
   @override
-  State<Map> createState() => MapState();
+  State<MapView> createState() => MapViewState();
 }
 
-class MapState extends State<Map> {
+class MapViewState extends State<MapView> {
   Completer<GoogleMapController> _controller = Completer();
 
   static final CameraPosition _kGTCampus = CameraPosition(

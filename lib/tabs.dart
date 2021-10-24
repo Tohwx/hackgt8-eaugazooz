@@ -26,9 +26,23 @@ class _EventsTabState extends State<EventsTab> {
 
   Widget _createTile(Event e) {
     return ListTile(
-        title: Text(e.name, style: biggerFont),
-        // minVerticalPadding: 40.0,
-        leading: const Icon(Icons.subject));
+      title: Text(e.name, style: biggerFont),
+      // minVerticalPadding: 40.0,
+      leading: const Icon(Icons.subject),
+      onTap: () {
+        _tapEventTile(e);
+      },
+    );
+  }
+
+  void _tapEventTile(Event e) {
+    Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) {
+      return Scaffold(
+        appBar: AppBar(title: Text(e.name)),
+        body:
+            Text("Hello this is app view for " + e.name), // DEVAUGHN FORM HERE
+      );
+    }));
   }
 }
 
@@ -48,7 +62,7 @@ class _LeaderboardTabState extends State<LeaderboardTab> {
       itemBuilder: (context, i) {
         return ListTile(
             title: Text(users[i].name),
-            leading: Icon(Icons.face),
+            leading: const Icon(Icons.face),
             trailing: Text("Karma: " + users[i].karma.toString()));
       },
     );

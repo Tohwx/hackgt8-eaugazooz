@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-// CONSTANTS
+// CONSTANTS AND DATA
 
 List<Event> items = [
   Event.withParams("HackGT8", "Yes", true, true, 1.0),
-  Event.withParams("VSA moon festival", "Yes", true, true, 1.0),
+  Event.withParams("VSA moon festival!", "Yes", true, true, 1.0),
   Event.nameOnly("Event C"),
   Event.nameOnly("Event D1"),
   Event()

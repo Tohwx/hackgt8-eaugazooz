@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'tabs.dart';
+import 'mapdisplay.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,8 +43,9 @@ class _MyHomePageState extends State<MyHomePage> {
   void _pushSettings() {
     Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) {
       return Scaffold(
-        appBar: AppBar(title: Text('Map view'), leading: CloseButton()),
-        body: Map(),
+        appBar:
+            AppBar(title: const Text('Map view'), leading: const CloseButton()),
+        body: const MapView(),
       );
     }));
   }
@@ -82,9 +85,9 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         floatingActionButton: FloatingActionButton.extended(
-            label: Text("Add something!"),
+            label: const Text("Add something!"),
             onPressed: _pushAddNew,
-            icon: Icon(Icons.add)),
+            icon: const Icon(Icons.add)),
       ),
     );
   }
