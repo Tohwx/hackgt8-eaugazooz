@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'dart:core';
 import 'classes.dart';
+import 'tabs.dart';
 //await Hive.initFlutter();
 
-List<String> strArr = [
-  'name',
+void _instantiateEvent() {
+  items
+      .add(Event.withParams(instanceVars[0], instanceVars[1], true, true, 1.0));
+  // const EventsTab();
+}
+
+List<String> instanceVars = [
+  'Halloween party!',
   'type',
   'false',
   'false'
@@ -74,6 +81,10 @@ class MyCustomFormState extends State<MyCustomForm> {
               }
               return null;
             },
+
+            onFieldSubmitted: (String value) async {
+              instanceVars[0] = value;
+            },
           ),
           TextFormField(
             //hint shows in field
@@ -88,6 +99,10 @@ class MyCustomFormState extends State<MyCustomForm> {
               }
               return null;
             },
+
+            onFieldSubmitted: (String value) async {
+              instanceVars[1] = value;
+            },
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -99,6 +114,10 @@ class MyCustomFormState extends State<MyCustomForm> {
                   // you'd often call a server or save the information in a database.
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Processing Data')),
+                  );
+                  _instantiateEvent();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Done!')),
                   );
                 }
               },
