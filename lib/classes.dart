@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 List<Event> items = [
   Event("Event A", "Yes", true, true, 1.0),
+  Event("Event B", "Yes", true, true, 1.0)
 ];
 
 const _biggerFont = const TextStyle(fontSize: 18.0);
