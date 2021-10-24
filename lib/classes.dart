@@ -94,6 +94,8 @@ class _MapState extends State<Map> {
 }
 
 class MapSample extends StatefulWidget {
+  const MapSample({Key? key}) : super(key: key);
+
   @override
   State<MapSample> createState() => MapSampleState();
 }
@@ -114,7 +116,7 @@ class MapSampleState extends State<MapSample> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       body: GoogleMap(
         mapType: MapType.hybrid,
         initialCameraPosition: _kGooglePlex,
