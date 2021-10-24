@@ -66,7 +66,10 @@ class _MyHomePageState extends State<MyHomePage> {
         body: const TabBarView(
           children: [
             EventsTab(),
-            Map(),
+            MaterialApp(
+              title: 'Flutter Google Maps Demo',
+              home: MapSample(),
+            ),
             LeaderboardTab(),
           ],
         ),
