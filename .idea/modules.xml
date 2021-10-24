@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Opportuno.iml" filepath="$PROJECT_DIR$/.idea/modules/Opportuno.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Opportuno.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Opportuno.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/opportuno_flutter.iml" filepath="$PROJECT_DIR$/opportuno_flutter.iml" />
     </modules>
   </component>
 </project>
