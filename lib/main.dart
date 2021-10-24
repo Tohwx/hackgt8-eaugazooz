@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -27,22 +26,27 @@ class MyApp extends StatelessWidget {
 class TabBarMenu extends StatelessWidget {
   const TabBarMenu({Key? key}) : super(key: key);
 
+  void _pushSettings() {}
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          bottom: const TabBar(
-            indicatorColor: Colors.amber,
-            tabs: [
-              Tab(icon: Icon(Icons.home)),
-              Tab(icon: Icon(Icons.map)),
-              Tab(icon: Icon(Icons.leaderboard)),
-            ],
-          ),
-          title: const Text('Opportuno'),
-        ),
+            bottom: const TabBar(
+              indicatorColor: Colors.amber,
+              tabs: [
+                Tab(icon: Icon(Icons.home)),
+                Tab(icon: Icon(Icons.map)),
+                Tab(icon: Icon(Icons.leaderboard)),
+              ],
+            ),
+            title: const Text('Opportuno'),
+            actions: [
+              IconButton(
+                  icon: const Icon(Icons.settings), onPressed: _pushSettings)
+            ]),
         body: const TabBarView(
           children: [
             Icon(Icons.home),
@@ -74,7 +78,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
