@@ -94,15 +94,6 @@ class MapState extends State<Map> {
     zoom: 10, // 14.4746,
   );
 
-<<<<<<< HEAD
-=======
-  static final CameraPosition _kLake = CameraPosition(
-      bearing: 0,
-      target: LatLng(33.77551715463846, -84.39559957027134),
-      tilt: 0,
-      zoom: 10);
-
->>>>>>> d9a08e859064de43d997604491971402b39fb03e
   @override
   Widget build(BuildContext context) {
     return Scaffold(
