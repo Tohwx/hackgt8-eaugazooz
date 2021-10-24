@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+List<Event> items = [
+  Event("Event A", "Yes", true, true, 1.0),
+];
+
+const _biggerFont = const TextStyle(fontSize: 18.0);
+
 // Event class
 class Event {
   // fields
@@ -11,8 +17,7 @@ class Event {
 
   double progress = 1.0;
 
-  Event(this.name, this.type, this.hasFood, 
-        this.hasSwag, this.progress);
+  Event(this.name, this.type, this.hasFood, this.hasSwag, this.progress);
 }
 
 // List of events to display
@@ -26,7 +31,15 @@ class EventsTab extends StatefulWidget {
 class _EventsTabState extends State<EventsTab> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return _createTile(items[index]);
+        });
+  }
+
+  Widget _createTile(Event e) {
+    return ListTile(title: Text(e.name, style: _biggerFont));
   }
 }
 
@@ -39,6 +52,20 @@ class Map extends StatefulWidget {
 }
 
 class _MapState extends State<Map> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+class LeaderboardTab extends StatefulWidget {
+  const LeaderboardTab({Key? key}) : super(key: key);
+
+  @override
+  _LeaderboardTabState createState() => _LeaderboardTabState();
+}
+
+class _LeaderboardTabState extends State<LeaderboardTab> {
   @override
   Widget build(BuildContext context) {
     return Container();
@@ -67,9 +94,9 @@ class TabBarMenu extends StatelessWidget {
         ),
         body: const TabBarView(
           children: [
-            Icon(Icons.home),
-            Icon(Icons.map),
-            Icon(Icons.leaderboard),
+            EventsTab(),
+            Map(),
+            LeaderboardTab(),
           ],
         ),
       ),
