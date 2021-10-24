@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 List<Event> items = [
-  Event("Event A", "Yes", true, true, 1.0),
-  Event("Event B", "Yes", true, true, 1.0)
+  Event.withParams("Event A", "Yes", true, true, 1.0),
+  Event.withParams("Event B", "Yes", true, true, 1.0),
+  Event()
 ];
 
 const _biggerFont = const TextStyle(fontSize: 18.0);
@@ -18,7 +19,10 @@ class Event {
 
   double progress = 1.0;
 
-  Event(this.name, this.type, this.hasFood, this.hasSwag, this.progress);
+  Event();
+
+  Event.withParams(
+      this.name, this.type, this.hasFood, this.hasSwag, this.progress);
 }
 
 // List of events to display
