@@ -21,6 +21,11 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+def mapsAPI = localProperties.getProperty('MAPS_API_KEY')
+if (mapsAPI == null) {
+    throw new GradleException("MAPS_API_KEY not found. Define in the local.properties file.")
+}
+
 apply plugin: 'com.android.application'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
