@@ -39,7 +39,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void _pushSettings() {}
+  void _pushSettings() {
+    Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) {
+      return const MaterialApp(
+        title: 'Flutter Google Maps Demo',
+        home: Map(),
+      );
+    }));
+  }
 
   void _pushAddNew() {
     Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) {
@@ -53,19 +60,18 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 2,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Opportuno'),
           actions: [
-            IconButton(
-                icon: const Icon(Icons.settings), onPressed: _pushSettings)
+            IconButton(icon: const Icon(Icons.map), onPressed: _pushSettings)
           ],
           bottom: const TabBar(
             indicatorColor: Colors.amber,
             tabs: [
               Tab(icon: Icon(Icons.home)),
-              Tab(icon: Icon(Icons.map)),
+              //Tab(icon: Icon(Icons.map)),
               Tab(icon: Icon(Icons.leaderboard)),
             ],
           ),
@@ -73,10 +79,6 @@ class _MyHomePageState extends State<MyHomePage> {
         body: const TabBarView(
           children: [
             EventsTab(),
-            MaterialApp(
-              title: 'Flutter Google Maps Demo',
-              home: Map(),
-            ),
             LeaderboardTab(),
           ],
         ),
