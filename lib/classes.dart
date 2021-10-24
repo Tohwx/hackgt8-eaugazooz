@@ -10,6 +10,13 @@ List<Event> items = [
   Event()
 ];
 
+List<User> users = [
+  User(),
+  User.allParams("joe", 700),
+  User.allParams("amanda", 50),
+  User.allParams("boisson", 800)
+];
+
 const _biggerFont = const TextStyle(fontSize: 18.0);
 
 // Event class
@@ -29,6 +36,15 @@ class Event {
 
   Event.withParams(
       this.name, this.type, this.hasFood, this.hasSwag, this.progress);
+}
+
+class User {
+  String name = "unnamed";
+  int karma = 0;
+
+  User();
+
+  User.allParams(this.name, this.karma);
 }
 
 // List of events to display
@@ -58,7 +74,7 @@ class _EventsTabState extends State<EventsTab> {
     return ListTile(
         title: Text(e.name, style: _biggerFont),
         // minVerticalPadding: 40.0,
-        leading: const Icon(Icons.account_circle));
+        leading: const Icon(Icons.subject));
   }
 }
 
@@ -122,7 +138,6 @@ class MapSampleState extends State<MapSample> {
   }
 }
 
-
 class LeaderboardTab extends StatefulWidget {
   const LeaderboardTab({Key? key}) : super(key: key);
 
@@ -133,6 +148,11 @@ class LeaderboardTab extends StatefulWidget {
 class _LeaderboardTabState extends State<LeaderboardTab> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ListView.builder(
+      itemCount: users.length,
+      itemBuilder: (context, i) {
+        return ListTile(title: Text(users[i].name));
+      },
+    );
   }
 }
