@@ -91,14 +91,14 @@ class MapState extends State<Map> {
 
   static final CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(33.77551715463846, -84.39559957027134),
-    zoom: 19.151926040649414, // 14.4746,
+    zoom: 10, // 14.4746,
   );
 
   static final CameraPosition _kLake = CameraPosition(
       bearing: 0,
       target: LatLng(33.77551715463846, -84.39559957027134),
       tilt: 0,
-      zoom: 19.151926040649414);
+      zoom: 10);
 
   @override
   Widget build(BuildContext context) {
