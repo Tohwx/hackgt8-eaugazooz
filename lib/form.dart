@@ -1,53 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 //await Hive.initFlutter();
-
-void main() {
-  runApp(
-    MyApp(),
-  );
-}
 
 // CREATING A FORM
 
-class MyApp extends StatelessWidget {
-  //const MyApp({Key? key}) : super(key: key);
-  const MyApp({Key? key}) : super(key: key);
-
-  static const String _title = 'Flutter Code Sample';
-
-  @override
-  Widget build(BuildContext context) {
-    const appTitle = 'Form Validation Demo';
-
-    return MaterialApp(
-      title: appTitle,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(appTitle),
+// return a container in which a form will be set up
+Widget formContainer() {
+  return Container(
+    padding: const EdgeInsets.all(50.0),
+    //screen
+    child: Column(
+      children: [
+        Row(
+          children: const [
+            Text('Food: '),
+            MyStatefulWidget(),
+            Text('Swag: '),
+            MyStatefulWidget(),
+          ],
         ),
-        body: new Container(
-          padding: EdgeInsets.all(50.0),
-          //screen
-          child: new Column(
-            children: [
-              new Container(
-                child: new Row(
-                  children: [
-                    new Text('Food: '),
-                    MyStatefulWidget(),
-                    new Text('Swag: '),
-                    MyStatefulWidget(),
-                  ],
-                ),
-              ),
-              new Container(child: MyCustomForm()),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+        const MyCustomForm(),
+      ],
+    ),
+  );
 }
 
 // Create a Form widget.
