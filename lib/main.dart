@@ -14,9 +14,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Opportuno',
       theme: ThemeData(
-        // Try running your application with "flutter run".
-        // Invoke "hot reload" press "r" in the console where you ran "flutter run"
-
         primarySwatch: Colors.amber,
       ),
       home: const MyHomePage(title: 'Opportuno Home'),
@@ -27,8 +24,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
-  // This widget is the home page of your application.
-  // It is stateful, meaning that it has a State object
+  // Stateful home page, meaning that it has a State object
   // that contains fields that affect how it looks.
 
   // This class is the configuration for the state. It holds the values (such the title)
@@ -43,11 +39,40 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  void _pushSettings() {}
+
+  void _pushAddNew() {}
+
   @override
   Widget build(BuildContext context) {
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return TabBarMenu();
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Opportuno'),
+          actions: [
+            IconButton(
+                icon: const Icon(Icons.settings), onPressed: _pushSettings)
+          ],
+          bottom: const TabBar(
+            indicatorColor: Colors.amber,
+            tabs: [
+              Tab(icon: Icon(Icons.home)),
+              Tab(icon: Icon(Icons.map)),
+              Tab(icon: Icon(Icons.leaderboard)),
+            ],
+          ),
+        ),
+        body: const TabBarView(
+          children: [
+            EventsTab(),
+            Map(),
+            LeaderboardTab(),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+            onPressed: _pushAddNew, child: Icon(Icons.add)),
+      ),
+    );
   }
 }
