@@ -93,12 +93,19 @@ class _LeaderboardTabState extends State<LeaderboardTab> {
 class TabBarMenu extends StatelessWidget {
   const TabBarMenu({Key? key}) : super(key: key);
 
+  void _pushSettings() {}
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
         appBar: AppBar(
+          title: const Text('Opportuno'),
+          actions: [
+            IconButton(
+                icon: const Icon(Icons.settings), onPressed: _pushSettings)
+          ],
           bottom: const TabBar(
             indicatorColor: Colors.amber,
             tabs: [
@@ -107,7 +114,6 @@ class TabBarMenu extends StatelessWidget {
               Tab(icon: Icon(Icons.leaderboard)),
             ],
           ),
-          title: const Text('Opportuno'),
         ),
         body: const TabBarView(
           children: [
