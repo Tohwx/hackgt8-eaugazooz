@@ -12,6 +12,23 @@ class EventsTab extends StatefulWidget {
 class _EventsTabState extends State<EventsTab> {
   @override
   Widget build(BuildContext context) {
+    return Stack(children: <Widget>[
+      ListView.separated(
+        padding: const EdgeInsets.all(16.0),
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return _createTile(items[index]);
+        },
+        separatorBuilder: (context, index) {
+          return const Divider();
+        },
+      ),
+      const Opacity(
+        opacity: 0.1,
+        child: Image(image: AssetImage('assets/buzzy.gif')),
+      ),
+    ]);
+
     return ListView.separated(
       padding: const EdgeInsets.all(16.0),
       itemCount: items.length,
