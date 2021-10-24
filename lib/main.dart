@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
             EventsTab(),
             MaterialApp(
               title: 'Flutter Google Maps Demo',
-              home: MapSample(),
+              home: Map(),
             ),
             LeaderboardTab(),
           ],

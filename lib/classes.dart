@@ -83,35 +83,21 @@ class Map extends StatefulWidget {
   const Map({Key? key}) : super(key: key);
 
   @override
-  _MapState createState() => _MapState();
+  State<Map> createState() => MapState();
 }
 
-class _MapState extends State<Map> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-class MapSample extends StatefulWidget {
-  const MapSample({Key? key}) : super(key: key);
-
-  @override
-  State<MapSample> createState() => MapSampleState();
-}
-
-class MapSampleState extends State<MapSample> {
+class MapState extends State<Map> {
   Completer<GoogleMapController> _controller = Completer();
 
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
+    target: LatLng(33.77551715463846, -84.39559957027134),
+    zoom: 19.151926040649414, // 14.4746,
   );
 
   static final CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
+      bearing: 0,
+      target: LatLng(33.77551715463846, -84.39559957027134),
+      tilt: 0,
       zoom: 19.151926040649414);
 
   @override
