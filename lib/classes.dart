@@ -3,8 +3,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
 
 List<Event> items = [
-  Event.withParams("Event A", "Yes", true, true, 1.0),
-  Event.withParams("Event B", "Yes", true, true, 1.0),
+  Event.withParams("HackGT8", "Yes", true, true, 1.0),
+  Event.withParams("VSA moon festival", "Yes", true, true, 1.0),
   Event.nameOnly("Event C"),
   Event.nameOnly("Event D1"),
   Event()
