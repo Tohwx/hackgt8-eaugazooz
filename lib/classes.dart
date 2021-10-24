@@ -4,17 +4,18 @@ import 'package:flutter/material.dart';
 
 List<Event> items = [
   Event.withParams("HackGT8", "Yes", true, true, 1.0),
-  Event.withParams("VSA moon festival!", "Yes", true, true, 1.0),
-  Event.nameOnly("Event C"),
-  Event.nameOnly("Event D1"),
-  Event()
+  Event.withParams("VSA moon festival", "Yes", true, true, 1.0),
+  Event.withParams("Shirts at Exhibition Hall", "Yes", false, true, 1.0),
+  Event.nameOnly("CoC lunch"),
+  Event.withParams("Small pumpkin event", "Yes", false, true, 0.0),
 ];
 
 List<User> users = [
-  User(),
-  User.allParams("joe", 700),
-  User.allParams("amanda", 50),
-  User.allParams("boisson", 800)
+  User.allParams("Amanda", 10),
+  User.allParams("Joe", 700),
+  User.allParams("Wei Xiong", 50),
+  User.allParams("Devaughn", 800),
+  User.allParams("KT", 1000)
 ];
 
 TextStyle biggerFont = const TextStyle(fontSize: 18.0);

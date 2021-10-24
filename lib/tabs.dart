@@ -52,18 +52,46 @@ class _EventsTabState extends State<EventsTab> {
           children: <Widget>[Icon(Icons.bakery_dining), Icon(Icons.redeem)]);
     } else if (e.hasFood) {
       return Icon(Icons.bakery_dining);
-    } else {
+    } else if (e.hasSwag) {
       return Icon(Icons.redeem);
+    } else {
+      return Icon(Icons.sentiment_dissatisfied);
     }
   }
 
   void _tapEventTile(Event e) {
     Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) {
+      List<String> allInstVars = [
+        "Name: ",
+        "Type: ",
+        "Has food? ",
+        "Has swag? ",
+        "Current supply status"
+      ];
+
+      List<String> actualInst = [
+        e.name,
+        e.type,
+        e.hasFood.toString(),
+        e.hasSwag.toString(),
+        e.progress.toString()
+      ];
+
       return Scaffold(
-        appBar: AppBar(title: Text(e.name)),
-        body:
-            Text("Hello this is app view for " + e.name), // DEVAUGHN FORM HERE
-      );
+          appBar: AppBar(title: Text("Event detail view")),
+          body: ListView.separated(
+            padding: const EdgeInsets.all(16.0),
+            itemCount: allInstVars.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                  leading: Text(allInstVars[index],
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  title: Text(actualInst[index]));
+            },
+            separatorBuilder: (context, index) {
+              return const Divider();
+            },
+          ));
     }));
   }
 }

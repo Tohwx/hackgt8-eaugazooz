@@ -11,9 +11,9 @@ void _instantiateEvent() {
 }
 
 List<String> instanceVars = [
-  'Halloween party!',
-  'type',
-  'false',
+  'Halloween party',
+  'Oops there\'s too much',
+  'true',
   'false'
 ]; //array to store inputs
 
