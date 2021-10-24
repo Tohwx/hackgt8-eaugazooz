@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 
 // Event class
-class Event extends StatelessWidget {
+class Event {
   // fields
   String name = "Default name";
   String type = "Food";
 
-  Event(this.name, this.type);
-}
+  bool hasFood = false;
+  bool hasSwag = false;
 
+  double progress = 1.0;
+
+  Event(this.name, this.type, this.hasFood, 
+        this.hasSwag, this.progress);
+}
 
 // List of events to display
 class EventsTab extends StatefulWidget {
-  const EventsTab({ Key? key }) : super(key: key);
+  const EventsTab({Key? key}) : super(key: key);
 
   @override
   _EventsTabState createState() => _EventsTabState();
@@ -21,16 +26,13 @@ class EventsTab extends StatefulWidget {
 class _EventsTabState extends State<EventsTab> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
-    );
+    return Container();
   }
 }
 
-
 // Map display
 class Map extends StatefulWidget {
-  const Map({ Key? key }) : super(key: key);
+  const Map({Key? key}) : super(key: key);
 
   @override
   _MapState createState() => _MapState();
@@ -39,12 +41,9 @@ class Map extends StatefulWidget {
 class _MapState extends State<Map> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
-    );
+    return Container();
   }
 }
-
 
 // TabBarMenu on home page
 class TabBarMenu extends StatelessWidget {
