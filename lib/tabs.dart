@@ -23,22 +23,14 @@ class _EventsTabState extends State<EventsTab> {
           return const Divider();
         },
       ),
-      const Opacity(
-        opacity: 0.1,
-        child: Image(image: AssetImage('assets/buzzy.gif')),
-      ),
+      const Align(
+        alignment: Alignment.bottomLeft,
+        child: Opacity(
+          opacity: 0.1,
+          child: Image(image: AssetImage('assets/buzzy.gif')),
+        ),
+      )
     ]);
-
-    return ListView.separated(
-      padding: const EdgeInsets.all(16.0),
-      itemCount: items.length,
-      itemBuilder: (context, index) {
-        return _createTile(items[index]);
-      },
-      separatorBuilder: (context, index) {
-        return const Divider();
-      },
-    );
   }
 
   Widget _createTile(Event e) {

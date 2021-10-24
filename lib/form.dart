@@ -3,7 +3,12 @@ import 'dart:core';
 import 'classes.dart';
 //await Hive.initFlutter();
 
-List<String> strArr = ['name','type','false','false']; //array to store inputs
+List<String> strArr = [
+  'name',
+  'type',
+  'false',
+  'false'
+]; //array to store inputs
 
 // CREATING A FORM
 
@@ -113,11 +118,11 @@ class MyStatefulWidget1 extends StatefulWidget {
   const MyStatefulWidget1({Key? key}) : super(key: key);
 
   @override
-  State<MyStatefulWidget1> createState() => _MyStatefulWidgetState();
+  State<MyStatefulWidget1> createState() => _MyStatefulWidget1State();
 }
 
 /// This is the private State class that goes with MyStatefulWidget.
-class _MyStatefulWidgetState1 extends State<MyStatefulWidget1> {
+class _MyStatefulWidget1State extends State<MyStatefulWidget1> {
   bool isChecked = false;
 
   @override
@@ -154,11 +159,11 @@ class MyStatefulWidget2 extends StatefulWidget {
   const MyStatefulWidget2({Key? key}) : super(key: key);
 
   @override
-  State<MyStatefulWidget2> createState() => _MyStatefulWidgetState();
+  State<MyStatefulWidget2> createState() => _MyStatefulWidget2State();
 }
 
 /// This is the private State class that goes with MyStatefulWidget.
-class _MyStatefulWidgetState2 extends State<MyStatefulWidget> {
+class _MyStatefulWidget2State extends State<MyStatefulWidget2> {
   bool isChecked = false;
 
   @override
