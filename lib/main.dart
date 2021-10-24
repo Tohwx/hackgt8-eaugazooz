@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'classes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,12 +40,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   void _pushSettings() {
     Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) {
-      return MaterialApp(
-          title: 'Flutter Google Maps Demo',
-          home: Scaffold(
-            appBar: AppBar(title: Text('Map view'), leading: CloseButton()),
-            body: Map(),
-          ));
+      return Scaffold(
+        appBar: AppBar(title: Text('Map view'), leading: CloseButton()),
+        body: Map(),
+      );
     }));
   }
 
