@@ -4,7 +4,7 @@ List<Event> items = [
   Event.withParams("Event A", "Yes", true, true, 1.0),
   Event.withParams("Event B", "Yes", true, true, 1.0),
   Event.nameOnly("Event C"),
-  Event.nameOnly("Event D"),
+  Event.nameOnly("Event D1"),
   Event()
 ];
 
@@ -86,47 +86,5 @@ class _LeaderboardTabState extends State<LeaderboardTab> {
   @override
   Widget build(BuildContext context) {
     return Container();
-  }
-}
-
-// TabBarMenu on home page
-class TabBarMenu extends StatelessWidget {
-  const TabBarMenu({Key? key}) : super(key: key);
-
-  void _pushSettings() {}
-
-  void _pushAddNew() {}
-
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Opportuno'),
-          actions: [
-            IconButton(
-                icon: const Icon(Icons.settings), onPressed: _pushSettings)
-          ],
-          bottom: const TabBar(
-            indicatorColor: Colors.amber,
-            tabs: [
-              Tab(icon: Icon(Icons.home)),
-              Tab(icon: Icon(Icons.map)),
-              Tab(icon: Icon(Icons.leaderboard)),
-            ],
-          ),
-        ),
-        body: const TabBarView(
-          children: [
-            EventsTab(),
-            Map(),
-            LeaderboardTab(),
-          ],
-        ),
-        floatingActionButton: FloatingActionButton(
-            onPressed: _pushAddNew, child: Icon(Icons.add)),
-      ),
-    );
   }
 }
