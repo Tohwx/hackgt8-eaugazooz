@@ -89,38 +89,32 @@ class Map extends StatefulWidget {
 class MapState extends State<Map> {
   Completer<GoogleMapController> _controller = Completer();
 
-  static final CameraPosition _kGooglePlex = CameraPosition(
+  static final CameraPosition _kGTCampus = CameraPosition(
     target: LatLng(33.77551715463846, -84.39559957027134),
-    zoom: 19.151926040649414, // 14.4746,
+    zoom: 10, // 14.4746,
   );
-
-  static final CameraPosition _kLake = CameraPosition(
-      bearing: 0,
-      target: LatLng(33.77551715463846, -84.39559957027134),
-      tilt: 0,
-      zoom: 19.151926040649414);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: GoogleMap(
-        mapType: MapType.hybrid,
-        initialCameraPosition: _kGooglePlex,
+        mapType: MapType.normal,
+        initialCameraPosition: _kGTCampus,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
-        label: Text('To the lake!'),
-        icon: Icon(Icons.directions_boat),
+        onPressed: _resetCamera,
+        label: Text('Reset'),
+        icon: Icon(Icons.filter_center_focus),
       ),
     );
   }
 
-  Future<void> _goToTheLake() async {
+  Future<void> _resetCamera() async {
     final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
+    controller.animateCamera(CameraUpdate.newCameraPosition(_kGTCampus));
   }
 }
 
