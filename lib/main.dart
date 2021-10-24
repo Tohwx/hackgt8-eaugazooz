@@ -26,8 +26,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Startup Name Generator',
       theme: ThemeData(
-        primarySwatch: Colors.amber,
-      ),
+          // primarySwatch: Colors.amber,
+          appBarTheme: const AppBarTheme(
+              backgroundColor: Colors.white, foregroundColor: Colors.black)),
       home: RandomWords(),
     );
   }
@@ -76,15 +77,50 @@ class _RandomWordsState extends State<RandomWords> {
           alreadySaved ? Icons.favorite : Icons.favorite_border,
           color: alreadySaved ? Colors.red : null,
           semanticLabel: alreadySaved ? 'Remove from saved' : 'Save',
+        ),
+        onTap: () {
+          setState(() {
+            if (alreadySaved) {
+              _saved.remove(pair);
+            } else {
+              _saved.add(pair);
+            }
+          });
+        });
+  }
+
+  void _pushSaved() {
+    // watch video on what BuildContext is
+    Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) {
+      final tiles = _saved.map((pair) {
+        return ListTile(
+            title: Text(
+          pair.asPascalCase,
+          style: _biggerFont,
         ));
+      });
+      final divided = tiles.isNotEmpty
+          ? ListTile.divideTiles(context: context, tiles: tiles).toList()
+          : <Widget>[];
+      return Scaffold(
+        appBar: AppBar(title: const Text('Saved Suggestions')),
+        body: ListView(children: divided),
+      );
+    }));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Center(child: Text('Startup Name Generator')),
-        ),
+            title: Center(child: Text('Startup Name Generator')),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.list),
+                onPressed: _pushSaved,
+                tooltip: 'Saved Suggestions',
+              )
+            ]),
         body: _buildSuggestions());
   }
 }
