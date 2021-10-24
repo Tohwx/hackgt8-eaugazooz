@@ -33,6 +33,7 @@ class MapViewState extends State<MapView> {
         label: Text('Reset'),
         icon: Icon(Icons.filter_center_focus),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat
     );
   }
 
