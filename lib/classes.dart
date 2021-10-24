@@ -58,7 +58,7 @@ class _EventsTabState extends State<EventsTab> {
     return ListTile(
         title: Text(e.name, style: _biggerFont),
         // minVerticalPadding: 40.0,
-        leading: const Icon(Icons.account_circle));
+        leading: const Icon(Icons.subject));
   }
 }
 
@@ -119,7 +119,6 @@ class MapSampleState extends State<MapSample> {
     controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
   }
 }
-
 
 class LeaderboardTab extends StatefulWidget {
   const LeaderboardTab({Key? key}) : super(key: key);

@@ -41,7 +41,14 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   void _pushSettings() {}
 
-  void _pushAddNew() {}
+  void _pushAddNew() {
+    Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) {
+      return Scaffold(
+        appBar: AppBar(title: const Text('Submit something!')),
+        body: const Text("insert body here"), // DEVAUGHN FORM HERE
+      );
+    }));
+  }
 
   @override
   Widget build(BuildContext context) {
