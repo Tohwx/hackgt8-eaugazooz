@@ -38,10 +38,23 @@ class _EventsTabState extends State<EventsTab> {
       title: Text(e.name, style: biggerFont),
       // minVerticalPadding: 40.0,
       leading: const Icon(Icons.subject),
+      trailing: _statusIcon(e),
       onTap: () {
         _tapEventTile(e);
       },
     );
+  }
+
+  Widget _statusIcon(Event e) {
+    if (e.hasFood && e.hasSwag) {
+      return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[Icon(Icons.bakery_dining), Icon(Icons.redeem)]);
+    } else if (e.hasFood) {
+      return Icon(Icons.bakery_dining);
+    } else {
+      return Icon(Icons.redeem);
+    }
   }
 
   void _tapEventTile(Event e) {
