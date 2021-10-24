@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'classes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,42 +20,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.amber,
       ),
       home: const MyHomePage(title: 'Opportuno Home'),
-    );
-  }
-}
-
-class TabBarMenu extends StatelessWidget {
-  const TabBarMenu({Key? key}) : super(key: key);
-
-  void _pushSettings() {}
-
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-            bottom: const TabBar(
-              indicatorColor: Colors.amber,
-              tabs: [
-                Tab(icon: Icon(Icons.home)),
-                Tab(icon: Icon(Icons.map)),
-                Tab(icon: Icon(Icons.leaderboard)),
-              ],
-            ),
-            title: const Text('Opportuno'),
-            actions: [
-              IconButton(
-                  icon: const Icon(Icons.settings), onPressed: _pushSettings)
-            ]),
-        body: const TabBarView(
-          children: [
-            Icon(Icons.home),
-            Icon(Icons.map),
-            Icon(Icons.leaderboard),
-          ],
-        ),
-      ),
     );
   }
 }
