@@ -149,9 +149,9 @@ class _LeaderboardTabState extends State<LeaderboardTab> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      itemCount: users.length,
       itemBuilder: (context, i) {
-        if (i < users.length) return ListTile(title: Text(users[i].name));
-        return Container();
+        return ListTile(title: Text(users[i].name));
       },
     );
   }
