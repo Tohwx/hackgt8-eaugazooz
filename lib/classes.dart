@@ -91,7 +91,7 @@ class MapState extends State<Map> {
 
   static final CameraPosition _kGTCampus = CameraPosition(
     target: LatLng(33.77551715463846, -84.39559957027134),
-    zoom: 10, // 14.4746,
+    zoom: 15, // 14.4746,
   );
 
   @override
