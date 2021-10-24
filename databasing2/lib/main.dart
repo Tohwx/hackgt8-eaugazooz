@@ -79,6 +79,25 @@ class MyCustomFormState extends State<MyCustomForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TextFormField(
+            //hint shows in field
+            decoration: new InputDecoration(
+                contentPadding:
+                    EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                hintText: 'Event name'),
+            // The validator receives the text that the user has entered.
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter some text';
+              }
+              return null;
+            },
+          ),
+          TextFormField(
+            //hint shows in field
+            decoration: new InputDecoration(
+                contentPadding:
+                    EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                hintText: 'Type of event'),
             // The validator receives the text that the user has entered.
             validator: (value) {
               if (value == null || value.isEmpty) {
