@@ -148,10 +148,14 @@ class LeaderboardTab extends StatefulWidget {
 class _LeaderboardTabState extends State<LeaderboardTab> {
   @override
   Widget build(BuildContext context) {
+    users.sort((a, b) => b.karma.compareTo(a.karma));
     return ListView.builder(
       itemCount: users.length,
       itemBuilder: (context, i) {
-        return ListTile(title: Text(users[i].name));
+        return ListTile(
+            title: Text(users[i].name),
+            leading: Icon(Icons.face),
+            trailing: Text("Karma: " + users[i].karma.toString()));
       },
     );
   }

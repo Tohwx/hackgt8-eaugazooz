@@ -80,8 +80,10 @@ class _MyHomePageState extends State<MyHomePage> {
             LeaderboardTab(),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-            onPressed: _pushAddNew, child: Icon(Icons.add)),
+        floatingActionButton: FloatingActionButton.extended(
+            label: Text("Add something!"),
+            onPressed: _pushAddNew,
+            icon: Icon(Icons.add)),
       ),
     );
   }
