@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:opportuno_flutter/form.dart';
 import 'tabs.dart';
 import 'mapdisplay.dart';
+import 'form.dart';
 
 void main() {
   runApp(const MyApp());
@@ -53,9 +55,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void _pushAddNew() {
     Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Submit something!')),
-        body: const Text("insert body here"), // DEVAUGHN FORM HERE
-      );
+          appBar: AppBar(title: const Text('Submit something!')),
+          body: formContainer());
     }));
   }
 
