@@ -5,14 +5,14 @@ import 'tabs.dart';
 //await Hive.initFlutter();
 
 void _instantiateEvent() {
-  items
-      .add(Event.withParams(instanceVars[0], instanceVars[1], true, true, 1.0));
+  items.add(
+      Event.withParams(instanceVars[0], instanceVars[1], true, false, 1.0));
   // const EventsTab();
 }
 
 List<String> instanceVars = [
   'Halloween party',
-  'Oops there\'s too much',
+  'Too many pumpkins!',
   'true',
   'false'
 ]; //array to store inputs
