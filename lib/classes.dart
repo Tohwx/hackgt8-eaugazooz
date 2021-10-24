@@ -90,7 +90,7 @@ class MapState extends State<Map> {
   Completer<GoogleMapController> _controller = Completer();
 
   static final CameraPosition _kGTCampus = CameraPosition(
-    target: LatLng(33.77551715463846, -84.39559957027134),
+    target: LatLng(33.77458489779214, -84.39748777679348),
     zoom: 15, // 14.4746,
   );
 
