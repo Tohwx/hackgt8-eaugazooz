@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
+import 'dart:core';
+import 'classes.dart';
 //await Hive.initFlutter();
+
+List<String> strArr = [
+  'name',
+  'type',
+  'false',
+  'false'
+]; //array to store inputs
 
 // CREATING A FORM
 
@@ -13,9 +22,9 @@ Widget formContainer() {
         Row(
           children: const [
             Text('Food: '),
-            MyStatefulWidget(),
+            MyStatefulWidget1(),
             Text('Swag: '),
-            MyStatefulWidget(),
+            MyStatefulWidget2(),
           ],
         ),
         const MyCustomForm(),
@@ -54,7 +63,7 @@ class MyCustomFormState extends State<MyCustomForm> {
         children: [
           TextFormField(
             //hint shows in field
-            decoration: new InputDecoration(
+            decoration: const InputDecoration(
                 contentPadding:
                     EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
                 hintText: 'Event name'),
@@ -68,7 +77,7 @@ class MyCustomFormState extends State<MyCustomForm> {
           ),
           TextFormField(
             //hint shows in field
-            decoration: new InputDecoration(
+            decoration: const InputDecoration(
                 contentPadding:
                     EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
                 hintText: 'Type of event'),
@@ -102,18 +111,59 @@ class MyCustomFormState extends State<MyCustomForm> {
   }
 }
 
-// CREATING CHECKBOX
+// CREATING CHECKBOX 1
 
 /// This is the stateful widget that the main application instantiates.
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
+class MyStatefulWidget1 extends StatefulWidget {
+  const MyStatefulWidget1({Key? key}) : super(key: key);
 
   @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+  State<MyStatefulWidget1> createState() => _MyStatefulWidget1State();
 }
 
 /// This is the private State class that goes with MyStatefulWidget.
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+class _MyStatefulWidget1State extends State<MyStatefulWidget1> {
+  bool isChecked = false;
+
+  @override
+  Widget build(BuildContext context) {
+    Color getColor(Set<MaterialState> states) {
+      const Set<MaterialState> interactiveStates = <MaterialState>{
+        MaterialState.pressed,
+        MaterialState.hovered,
+        MaterialState.focused,
+      };
+      if (states.any(interactiveStates.contains)) {
+        return Colors.blue;
+      }
+      return Colors.red;
+    }
+
+    return Checkbox(
+      checkColor: Colors.white,
+      fillColor: MaterialStateProperty.resolveWith(getColor),
+      value: isChecked,
+      onChanged: (bool? value) {
+        setState(() {
+          isChecked = value!;
+        });
+      },
+    );
+  }
+}
+
+// CREATING CHECKBOX 2
+
+/// This is the stateful widget that the main application instantiates.
+class MyStatefulWidget2 extends StatefulWidget {
+  const MyStatefulWidget2({Key? key}) : super(key: key);
+
+  @override
+  State<MyStatefulWidget2> createState() => _MyStatefulWidget2State();
+}
+
+/// This is the private State class that goes with MyStatefulWidget.
+class _MyStatefulWidget2State extends State<MyStatefulWidget2> {
   bool isChecked = false;
 
   @override
